@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- form container -->
+        <div class="form-container">
+            <form>
+                <h1>Join the chat</h1>
+                <section >
+                    <label for="usename">UserName : &nbsp;</label>
+                    <input type="text" name="username" id="username" placeholder="Enter your Username">
+                </section>
+                <button type="submit" id="join-chat-btn">Join chat</button>
+            </form>
+        </div>
+        
+        <!-- welcome container -->
+        <div class="welcome-screen">
+            <h1>Welcome To The Chatroom</h1>
+        </div>
+        <!-- chatroom container -->
+        <div class="chatroom-container">
+            <div class="chatroom-header">
+                <!-- Chatroom -->
+                <div class="logo"></div>
+                <div class="user-info">
+                    <span class="user"></span>
+                    <div class="image">
+                        <img src="images/user.png" alt="user-img">
+                    </div>
+                </div>
+            </div>
+            <div class="message-container">
+                <!-- this type of message we will add using js -->
+              <!-- <div class="message sent">hello</div>
+              <div class="message received">Folks ! </div>
+              <div class="message sent">how r u?</div> -->
+            </div>
+         <div class="message-input-container">
+            <input type="text" name="message" placeholder="enter message">
+            <button id="send-btn">send</button>
+         </div>
+        </div>
+    </div>
+  
+    <script src="/socket.io/socket.io.js"></script>
+ <script src="index.js"></script>
+</body>
+
+</html>
