@@ -13,7 +13,7 @@ jobs:
 
     - name: performing action manually 
       run: |
-        ssh -i "${{secrets.EC2_INSTANCE_KEY}}" ubuntu@3.110.194.13
+        ssh -i ${{secrets.EC2_INSTANCE_KEY}} ubuntu@3.110.194.13
         cd ChatApp
         pm2 kill
         npm install 
