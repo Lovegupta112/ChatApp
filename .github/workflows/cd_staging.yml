@@ -1,0 +1,23 @@
+name: deploy to staging
+on: 
+  push: 
+    branches: 
+     - main 
+
+jobs: 
+ 
+  deploy:
+    name: deloying on staging ec2 cluster
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: performing action manually 
+      run: |
+        cd ChatApp
+        pm2 kill
+        npm install 
+        pm2 start server.js --name chatapp
+
+  
+
+   
