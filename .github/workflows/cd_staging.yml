@@ -15,7 +15,7 @@ jobs:
       run: |
         echo "${{secrets.PRIVATE_SSH_KEY}}" > ~/ssh_key
         chmod 400 ~/ssh_key
-        ssh -o StringHostKeyChecking=no -i ~/ssh_key ubuntu@3.110.194.13 
+        ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@3.110.194.13 
 
         cd ChatApp
         pm2 kill
