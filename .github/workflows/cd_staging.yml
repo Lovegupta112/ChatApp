@@ -16,8 +16,8 @@ jobs:
         echo "${{secrets.PRIVATE_SSH_KEY}}" > ~/ssh_key
         chmod 400 ~/ssh_key
         ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@3.110.194.13 
-        ls /
-        cd /ChatApp
+        ls /home/
+        cd /home/ubuntu/ChatApp
         pm2 kill
         npm install 
         pm2 start server.js --name chatapp
