@@ -13,7 +13,10 @@ jobs:
 
     - name: performing action manually 
       run: |
-        ssh -i ${{secrets.PRIVATE_SSH_KEY}} ubuntu@3.110.194.13
+        echo "${{secrets.PRIVATE_SSH_KEY}}" > ~/ssh_key
+        chmod 400 ~/ssh_key
+        ssh -i ~/ssh_key ubuntu@3.110.194.13
+
         cd ChatApp
         pm2 kill
         npm install 
