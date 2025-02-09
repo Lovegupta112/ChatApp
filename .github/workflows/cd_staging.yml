@@ -10,6 +10,9 @@ jobs:
     name: deloying on staging ec2 cluster
     runs-on: ubuntu-latest
     steps:
+    - name: installing aws cli 
+      run:  sudo apt-get install -y awscli
+      
     - name: fetching ec2 public ip
       run: |
         INSTANCE_ID="i-0e03b96d0d6ed1315"
