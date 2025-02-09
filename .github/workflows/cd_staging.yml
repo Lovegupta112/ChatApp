@@ -10,12 +10,20 @@ jobs:
     name: deloying on staging ec2 cluster
     runs-on: ubuntu-latest
     steps:
+    - name: fetching ec2 public ip
+      run: |
+        INSTANCE_ID="i-0e03b96d0d6ed1315"
+        AWS_REGION="ap-south-1"
+        PUBLIC_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID \ 
+          --query "Reservations[0].Instances[0].PublicIpAddress" \
+          --output text --region $AWS_REGION)
+         echo "PUBLIC_IP=$PUBLIC_IP" >> $GITHUB_ENV
 
     - name: performing action manually 
       run: |
         echo "${{secrets.PRIVATE_SSH_KEY}}" > ~/ssh_key
         chmod 400 ~/ssh_key
-        ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@3.110.194.13 -t << 'EOF'
+        ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@$PUBLIC_IP -t << 'EOF'
         ls /home/
         cd /home/ubuntu/ChatApp
         pm2 kill
